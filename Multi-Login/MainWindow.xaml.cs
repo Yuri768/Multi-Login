@@ -24,5 +24,19 @@ namespace Multi_Login
         {
             InitializeComponent();
         }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+            
+        }
+
+        private void bntLogin_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
