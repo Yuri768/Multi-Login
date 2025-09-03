@@ -91,6 +91,21 @@
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
+
+            <StackPanel Width="100">
+                <Button Margin="10 10" Style="{StaticResource MaterialDesignFloatingActionButton}"
+                        Background="{x:Null}"
+                        ToolTip="Close"
+                        x:Name="bntExit"
+                        Click="bntExit_Click"
+                        Width="40"
+                        Height="40" Cursor="Hand">
+                    <materialDesign:PackIcon Kind="close" 
+                                             Foreground="White"
+                                             Width="20"
+                                             Height="20"/>
+                </Button>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>
