@@ -78,7 +78,7 @@
                                 Background="#D94448"
                                 materialDesign:ButtonAssist.CornerRadius="10"
                                 Style="{StaticResource MaterialDesignRaisedButton}"
-                                Click="bntRegistrar_Click" Cursor="Hand"/>
+                                Click="bntIr_Registrar_Click" Cursor="Hand"/>
                         
                         <Button Width="100"
                                 Height="40"
@@ -149,7 +149,8 @@
                                 Background="#D94448"
                                 Foreground="White"
                                 Click="Button_Click"
-                                Content="Login"/>
+                                Content="Login"
+                                ToolTip="Ir para a tela de Login"/>
 
                         <Button Width="100"
                                 Height="40"
@@ -162,7 +163,8 @@
                                 ToolTip="Registrar"
                                 x:Name="btnRegister"
                                 Content="Entrar"
-                                Margin="10, 0"/>
+                                Margin="10, 0"
+                                Click="btnRegister_Click"/>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
@@ -175,7 +177,7 @@
                         x:Name="bntExit"
                         Click="bntExit_Click"
                         Width="40"
-                        Height="40" Cursor="Hand">
+                        Height="40">
                     <materialDesign:PackIcon Kind="close" 
                                              Foreground="White"
                                              Width="20"

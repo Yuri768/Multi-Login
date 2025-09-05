@@ -55,6 +55,30 @@ namespace Multi_Login
             }
         }
 
+        private bool CreateNewUser(String newUsername, String newPassword)
+        {
+            try
+            {
+                con.Open();
+                com.Connection = con;
+                com.CommandText = "INSERT INTO [dbo].[Users] (Username, Password, Status, Role) VALUES (@username, @password, 1, 'user');";
+                com.Parameters.Clear();
+                com.Parameters.AddWithValue("username", newUsername);
+                com.Parameters.AddWithValue("password", newPassword);
+                int rowsAffected = com.ExecuteNonQuery();
+                return rowsAffected > 0;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
+
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if(e.LeftButton == MouseButtonState.Pressed)
@@ -92,10 +116,35 @@ namespace Multi_Login
             LoginPanel.Visibility = Visibility.Visible;
         }
 
-        private void bntRegistrar_Click(object sender, RoutedEventArgs e)
+        private void bntIr_Registrar_Click(object sender, RoutedEventArgs e)
         {
             LoginPanel.Visibility = Visibility.Collapsed;
             RegisterPanel.Visibility = Visibility.Visible;
         }
+
+        private void btnRegister_Click(object sender, RoutedEventArgs e)
+        {
+            if(con.State == System.Data.ConnectionState.Open)
+            {
+                con.Close();
+            }
+
+            if (txtNewUsername.Text != null && txtNewPassword.Password != null)
+            {
+                if(txtNewPassword.Password == txtConfirmPassword.Password)
+                {
+                    if(CreateNewUser(txtNewUsername.Text, txtNewPassword.Password))
+                    {
+                        MessageBox.Show("Success on registering your new account", "Congrats", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error on registering your new account", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            }
+            
+        }
+
     }
 }
